@@ -1,7 +1,7 @@
 import React from "react";
 
 const Pricing = () => {
-  return <div>Pricing</div>;
+  return <div>Adding pricing in the app</div>;
 };
 
 export default Pricing;
