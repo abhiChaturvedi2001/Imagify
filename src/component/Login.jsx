@@ -33,7 +33,7 @@ const Login = () => {
     let { name, email, password } = formData;
     if (!isSignUp) {
       const response = await axios.post(
-        `http://localhost:4040/auth/login`,
+        `https://imagify-backend-qth6.onrender.com/auth/login`,
         { email: email, password: password },
         {
           withCredentials: true,
@@ -49,7 +49,7 @@ const Login = () => {
       }
     } else {
       const response = await axios.post(
-        `http://localhost:4040/auth/register`,
+        `https://imagify-backend-qth6.onrender.com/auth/register`,
         { name: name, email: email, password: password },
         {
           withCredentials: true,

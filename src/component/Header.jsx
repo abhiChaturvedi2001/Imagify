@@ -14,7 +14,7 @@ const Header = () => {
 
   const handleLogout = async () => {
     const response = await axios.post(
-      `http://localhost:4040/auth/logout`,
+      `https://imagify-backend-qth6.onrender.com/auth/logout`,
       {},
       { withCredentials: true }
     );
