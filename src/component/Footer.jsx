@@ -14,8 +14,8 @@ const Footer = () => {
       </div>
 
       <div className="flex items-center justify-center space-x-5 py-10">
-        <img src={appLogo} alt="" />
-        <div className="border-l border-black pl-4">
+        <img className="max-md:w-[100px]" src={appLogo} alt="" />
+        <div className="border-l border-black pl-4 max-md:textsm max-md:border-none max-md:pl-0">
           All right reserved. Copyright @imagify
         </div>
       </div>

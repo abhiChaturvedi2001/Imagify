@@ -76,7 +76,7 @@ const Login = () => {
       >
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <form
-            className="w-[25rem] min-h-[40vh] rounded-lg shadow-lg px-5 py-5 backdrop-blur-sm bg-white/80"
+            className="w-[25rem] max-md:w-[90vw] min-h-[40vh] rounded-lg shadow-lg px-5 py-5 backdrop-blur-sm bg-white/80"
             onSubmit={handleSubmit}
           >
             <div className="relative">
