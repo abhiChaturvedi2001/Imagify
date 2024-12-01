@@ -3,6 +3,8 @@ import Body from "./component/Body";
 import { createBrowserRouter, Outlet } from "react-router";
 import Pricing from "./component/Pricing";
 import Header from "./component/Header";
+import Login from "./component/Login";
+import ForgotPassword from "./component/ForgotPassword";
 
 const App = () => {
   return (
@@ -10,6 +12,7 @@ const App = () => {
       <div className="app">
         <Header />
         <Outlet />
+        <Login />
       </div>
     </>
   );
@@ -29,6 +32,10 @@ export const appRouter = createBrowserRouter([
         element: <Pricing />,
       },
     ],
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
   },
 ]);
 

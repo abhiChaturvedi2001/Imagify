@@ -9,7 +9,7 @@ const PriceCards = () => {
         {pricingInfo.map((items) => {
           return (
             <>
-              <div className="shadow-lg w-[20vw] px-5 py-5 h-[50vh] rounded-xl">
+              <div className="shadow-lg w-[20vw] px-5 py-5 min-h-[60vh] transition-all hover:shadow-xl rounded-xl">
                 <h1 className="text-3xl font-bold">{items.plan}</h1>
                 <ul className="mt-5 h-[25vh]">
                   {items.benefits.map((benefit) => {

@@ -13,15 +13,16 @@ const HowItWorks = () => {
         <div>
           {howItWorks.map((items) => {
             return (
-              <>
-                <div className="flex items-center space-x-3 transition-all duration-100 hover:shadow-xl cursor-pointer my-[20px] border  py-4 px-4 w-[50vw] rounded-lg shadow-md mx-auto">
-                  <img className="w-[50px]" src={items.icon} alt="" />
-                  <div>
-                    <h1 className="font-bold">{items.headingName}</h1>
-                    <p className="mt-1">{items.paraName}</p>
-                  </div>
+              <div
+                key={items.id}
+                className="flex items-center space-x-3 transition-all duration-100 hover:shadow-xl cursor-pointer my-[20px] border  py-4 px-4 w-[50vw] rounded-lg shadow-md mx-auto"
+              >
+                <img className="w-[50px]" src={items.icon} alt="" />
+                <div>
+                  <h1 className="font-bold">{items.headingName}</h1>
+                  <p className="mt-1">{items.paraName}</p>
                 </div>
-              </>
+              </div>
             );
           })}
         </div>
