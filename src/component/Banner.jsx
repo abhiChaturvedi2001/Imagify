@@ -10,11 +10,13 @@ const Banner = () => {
             Best text to image generator{" "}
             <img className="ml-2" src={starIcon} alt="" />
           </div>
-          <h1 className="text-7xl mt-7">Turn text to </h1>
-          <h1 className="text-7xl">
+          <h1 className="text-7xl mt-7 max-lg:text-5xl max-md:text-3xl">
+            Turn text to{" "}
+          </h1>
+          <h1 className="text-7xl max-lg:text-5xl max-md:text-3xl">
             <span className="text-[#007AFF]">image,</span> in seconds.
           </h1>
-          <p className="my-7">
+          <p className="my-7 max-md:w-[70%] mx-auto">
             Unleash your creativity with AI. Turn your imagination into visual
             art in <br /> seconds – just type, and watch the magic happen.
           </p>

@@ -15,7 +15,7 @@ const HowItWorks = () => {
             return (
               <div
                 key={items.id}
-                className="flex items-center space-x-3 transition-all duration-100 hover:shadow-xl cursor-pointer my-[20px] border  py-4 px-4 w-[50vw] rounded-lg shadow-md mx-auto"
+                className="flex items-center space-x-3 transition-all duration-100 hover:shadow-xl cursor-pointer my-[20px] border  py-4 px-4 w-[50vw] max-md:w-[90%] max-md:px-5 rounded-lg shadow-md mx-auto"
               >
                 <img className="w-[50px]" src={items.icon} alt="" />
                 <div>
