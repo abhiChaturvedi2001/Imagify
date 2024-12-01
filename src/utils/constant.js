@@ -48,3 +48,52 @@ export const howItWorks = [
         paraName: "Instantly download your creation or share it with the world directly from our platform."
     },
 ]
+
+export const pricingInfo = [
+    {
+        id: 1,
+        plan: "Free",
+        benefits: [
+            {
+                id: 11,
+                benefit: "AI - Generated Images",
+            },
+            {
+                id: 12,
+                benefit: "Shareable Links",
+            },
+            {
+                id: 13,
+                benefit: "Download the Image",
+            },
+            {
+                id: 14,
+                benefit: " credits 5,"
+            }
+        ],
+        price: 0
+    },
+    {
+        id: 2,
+        plan: "Premium",
+        benefits: [
+            {
+                id: 11,
+                benefit: "AI - Generated Images",
+            },
+            {
+                id: 12,
+                benefit: "Shareable Links",
+            },
+            {
+                id: 13,
+                benefit: "Download the Image",
+            },
+            {
+                id: 14,
+                benefit: "Unlimited Credits"
+            }
+        ],
+        price: 100
+    },
+]
