@@ -26,8 +26,12 @@ const ForgotPassword = () => {
         toast({ title: response?.data?.message });
         navigate("/verify-otp");
       }
+      
+      if (!response?.data?.success) {
+        toast({ title: response?.data?.message });
+      }
     } catch (error) {
-      return toast({ title: error.message });
+      throw new Error(error);
     } finally {
       setLoading(false);
     }
