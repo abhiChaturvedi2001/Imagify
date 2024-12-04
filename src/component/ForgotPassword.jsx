@@ -1,8 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import appLogo from "/logo.svg";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { toast } from "@/hooks/use-toast";
+import axios from "axios";
+import LoadingButton from "./LoadingButton";
 
 const ForgotPassword = () => {
+  const [userEmail, setuserEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const sendOTPFunction = async () => {
+    if (!userEmail) {
+      toast("please enter the valid email");
+    }
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        "https://imagify-backend-lilac.vercel.app/auth/send-otp",
+        {
+          email: userEmail,
+        },
+        { withCredentials: true }
+      );
+      if (response?.data?.success) {
+        toast({ title: response?.data?.message });
+        navigate("/verify-otp");
+      }
+    } catch (error) {
+      return toast({ title: error.message });
+    } finally {
+      setLoading(false);
+    }
+    setuserEmail("");
+  };
   return (
     <>
       <div className="flex items-center justify-center min-h-[70vh]">
@@ -13,12 +43,21 @@ const ForgotPassword = () => {
             Enter your email address we send you to link for reset the password
           </p>
           <input
+            value={userEmail}
+            onChange={(e) => setuserEmail(e.currentTarget.value)}
             className="block w-full my-3 py-2 px-2 rounded-md bg-gray-100 outline-none"
             type="text"
           />
-          <button className="w-full bg-black text-white py-2 rounded-md font-bold">
-            Reset Password
-          </button>
+          {loading ? (
+            <LoadingButton />
+          ) : (
+            <button
+              onClick={sendOTPFunction}
+              className="w-full bg-black text-white py-2 rounded-md font-bold"
+            >
+              Send Otp
+            </button>
+          )}
           <Link to={"/"}>
             <p className="text-center mt-4 hover:underline cursor-pointer font-poppins font-bold">
               Back to login

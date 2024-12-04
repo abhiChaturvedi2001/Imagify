@@ -33,7 +33,7 @@ const Login = () => {
     let { name, email, password } = formData;
     if (!isSignUp) {
       const response = await axios.post(
-        `https://imagify-backend-qth6.onrender.com/auth/login`,
+        `https://imagify-backend-lilac.vercel.app/auth/login`,
         { email: email, password: password },
         {
           withCredentials: true,
@@ -49,7 +49,7 @@ const Login = () => {
       }
     } else {
       const response = await axios.post(
-        `https://imagify-backend-qth6.onrender.com/auth/register`,
+        `https://imagify-backend-lilac.vercel.app/auth/register`,
         { name: name, email: email, password: password },
         {
           withCredentials: true,

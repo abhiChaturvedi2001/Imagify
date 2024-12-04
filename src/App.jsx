@@ -5,6 +5,8 @@ import Pricing from "./component/Pricing";
 import Header from "./component/Header";
 import Login from "./component/Login";
 import ForgotPassword from "./component/ForgotPassword";
+import VerifyPassword from "./component/VerifyPassword";
+import Reset from "./component/Reset";
 
 const App = () => {
   return (
@@ -36,6 +38,14 @@ export const appRouter = createBrowserRouter([
   {
     path: "/forgot-password",
     element: <ForgotPassword />,
+  },
+  {
+    path: "/verify-otp",
+    element: <VerifyPassword />,
+  },
+  {
+    path: "/reset-password",
+    element: <Reset />,
   },
 ]);
 

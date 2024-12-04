@@ -14,7 +14,7 @@ const Header = () => {
 
   const handleLogout = async () => {
     const response = await axios.post(
-      `https://imagify-backend-qth6.onrender.com/auth/logout`,
+      `https://imagify-backend-lilac.vercel.app/auth/logout`,
       {},
       { withCredentials: true }
     );
