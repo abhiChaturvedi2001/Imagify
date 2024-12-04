@@ -7,6 +7,7 @@ import Login from "./component/Login";
 import ForgotPassword from "./component/ForgotPassword";
 import VerifyPassword from "./component/VerifyPassword";
 import Reset from "./component/Reset";
+import Profile from "./component/Profile";
 
 const App = () => {
   return (
@@ -32,6 +33,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/pricing",
         element: <Pricing />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },

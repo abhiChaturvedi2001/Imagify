@@ -8,6 +8,7 @@ import axios from "axios";
 import { toast } from "@/hooks/use-toast";
 import { addUser } from "@/utils/userSlice";
 import LoadingButton from "./LoadingButton";
+import { BASE_URL } from "@/utils/constant";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -37,7 +38,7 @@ const Login = () => {
     try {
       if (!isSignUp) {
         const response = await axios.post(
-          `https://imagify-backend-lilac.vercel.app/auth/login`,
+          `${BASE_URL}/auth/login`,
           { email: email, password: password },
           {
             withCredentials: true,
@@ -53,7 +54,7 @@ const Login = () => {
         }
       } else {
         const response = await axios.post(
-          `https://imagify-backend-lilac.vercel.app/auth/register`,
+          `${BASE_URL}/auth/register`,
           { name: name, email: email, password: password },
           {
             withCredentials: true,
@@ -69,6 +70,7 @@ const Login = () => {
       }
     } catch (error) {
       console.log(error);
+      toast({ title: error.response.data.message });
     } finally {
       setLoading(false);
     }

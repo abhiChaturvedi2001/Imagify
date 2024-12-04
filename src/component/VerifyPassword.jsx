@@ -1,4 +1,5 @@
 import { toast } from "@/hooks/use-toast";
+import { BASE_URL } from "@/utils/constant";
 import axios from "axios";
 import React, { useState } from "react";
 import OtpInput from "react-otp-input";
@@ -9,22 +10,20 @@ const VerifyPassword = () => {
   const navigate = useNavigate();
   const verifyOtp = async () => {
     if (otp.length < 6) {
-      return toast({ title: "OTP is not " });
+      return toast({ title: "OTP is not valid " });
     }
     try {
       const response = await axios.post(
-        `https://imagify-backend-lilac.vercel.app/auth/verify-otp`,
+        `${BASE_URL}/auth/verify-otp`,
         { otp: otp },
         { withCredentials: true }
       );
       if (response?.data?.success) {
         toast({ title: response?.data?.message });
         navigate("/reset-password");
-      } else {
-        toast({ title: response?.data?.message });
       }
     } catch (error) {
-      toast({ title: error.message });
+      toast({ title: error?.response?.data?.message });
     }
   };
 

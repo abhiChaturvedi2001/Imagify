@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router";
 import { toast } from "@/hooks/use-toast";
 import axios from "axios";
 import LoadingButton from "./LoadingButton";
+import { BASE_URL } from "@/utils/constant";
 
 const ForgotPassword = () => {
   const [userEmail, setuserEmail] = useState("");
@@ -11,27 +12,28 @@ const ForgotPassword = () => {
   const navigate = useNavigate();
   const sendOTPFunction = async () => {
     if (!userEmail) {
-      toast("please enter the valid email");
+      toast({ title: "please enter the valid email" });
     }
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://imagify-backend-lilac.vercel.app/auth/send-otp",
+        `${BASE_URL}/auth/send-otp`,
         {
           email: userEmail,
         },
         { withCredentials: true }
       );
+
       if (response?.data?.success) {
         toast({ title: response?.data?.message });
         navigate("/verify-otp");
       }
-      
+
       if (!response?.data?.success) {
         toast({ title: response?.data?.message });
       }
     } catch (error) {
-      throw new Error(error);
+      toast({ title: error?.response?.data?.message });
     } finally {
       setLoading(false);
     }

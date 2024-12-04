@@ -1,4 +1,5 @@
 import { toast } from "@/hooks/use-toast";
+import { BASE_URL } from "@/utils/constant";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
@@ -9,7 +10,7 @@ const Reset = () => {
   const handleResetPassword = async () => {
     try {
       const response = await axios.post(
-        `https://imagify-backend-lilac.vercel.app/auth/reset-password`,
+        `${BASE_URL}/auth/reset-password`,
         {
           newPassword: newPassword,
         },
@@ -21,7 +22,9 @@ const Reset = () => {
         toast({ title: response?.data?.message });
         navigate("/");
       }
-    } catch (error) {}
+    } catch (error) {
+      toast({ title: error?.response?.data?.message });
+    }
   };
   return (
     <>

@@ -6,6 +6,7 @@ import { handleToggle } from "@/utils/toggleSlice";
 import axios from "axios";
 import { toast } from "@/hooks/use-toast";
 import { logoutUser } from "@/utils/userSlice";
+import { BASE_URL } from "@/utils/constant";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -14,11 +15,10 @@ const Header = () => {
 
   const handleLogout = async () => {
     const response = await axios.post(
-      `https://imagify-backend-lilac.vercel.app/auth/logout`,
+      `${BASE_URL}/auth/logout`,
       {},
       { withCredentials: true }
     );
-    console.log(response);
     if (response?.data?.success) {
       toast({ title: response?.data?.message });
       navigate("/");
@@ -64,14 +64,25 @@ const Header = () => {
                   tabIndex={0}
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                 >
+                  <Link to={"/profile"}>
+                    <li>
+                      <a className="justify-between">
+                        Profile
+                        <span className="badge">New</span>
+                      </a>
+                    </li>
+                  </Link>
                   <li>
                     <a className="justify-between">
-                      Profile
-                      <span className="badge">New</span>
+                      Credits
+                      <span className="badge">{user && user.credits}</span>
                     </a>
                   </li>
                   <li>
-                    <a>Settings</a>
+                    <a className="justify-between">
+                      Plan
+                      <span className="badge">{user && user.plans}</span>
+                    </a>
                   </li>
                   <li onClick={handleLogout}>
                     <a>Logout</a>

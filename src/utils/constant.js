@@ -97,3 +97,6 @@ export const pricingInfo = [
         price: 100
     },
 ]
+
+export const BASE_URL = "https://imagify-backend-lilac.vercel.app"
+// export const BASE_URL = "http://localhost:4040"
