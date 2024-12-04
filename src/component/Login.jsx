@@ -7,8 +7,10 @@ import { Link, useNavigate } from "react-router";
 import axios from "axios";
 import { toast } from "@/hooks/use-toast";
 import { addUser } from "@/utils/userSlice";
+import LoadingButton from "./LoadingButton";
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
   const toggle = useSelector((store) => store.toggle.toggle);
   let [formData, setFormData] = useState({
@@ -31,40 +33,47 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let { name, email, password } = formData;
-    if (!isSignUp) {
-      const response = await axios.post(
-        `https://imagify-backend-lilac.vercel.app/auth/login`,
-        { email: email, password: password },
-        {
-          withCredentials: true,
+    setLoading(true);
+    try {
+      if (!isSignUp) {
+        const response = await axios.post(
+          `https://imagify-backend-lilac.vercel.app/auth/login`,
+          { email: email, password: password },
+          {
+            withCredentials: true,
+          }
+        );
+        if (response?.data?.success) {
+          toast({
+            title: response?.data?.message,
+          });
+          navigate("/");
+          dispatch(handleToggle());
+          dispatch(addUser(response?.data?.user));
         }
-      );
-      if (response?.data?.success) {
-        toast({
-          title: response?.data?.message,
-        });
-        navigate("/");
-        dispatch(handleToggle());
-        dispatch(addUser(response?.data?.user));
-      }
-    } else {
-      const response = await axios.post(
-        `https://imagify-backend-lilac.vercel.app/auth/register`,
-        { name: name, email: email, password: password },
-        {
-          withCredentials: true,
+      } else {
+        const response = await axios.post(
+          `https://imagify-backend-lilac.vercel.app/auth/register`,
+          { name: name, email: email, password: password },
+          {
+            withCredentials: true,
+          }
+        );
+        if (response?.data?.success) {
+          toast({
+            title: response?.data?.message,
+            description: "Now Click on the login button",
+          });
+          setIsSignUp(false);
         }
-      );
-      if (response?.data?.success) {
-        toast({
-          title: response?.data?.message,
-          description: "Now Click on the login button",
-        });
-        setIsSignUp(false);
       }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
 
-    (name = ""), (email = ""), (password = "");
+    setFormData({ name: "", email: "", password: "" });
   };
 
   return (
@@ -132,9 +141,13 @@ const Login = () => {
                 </p>
               </Link>
             )}
-            <button className="bg-black mt-5 text-white rounded-full w-full py-2 px-2 cursor-pointer">
-              {isSignUp ? "Register" : "Login"}
-            </button>
+            {loading ? (
+              <LoadingButton />
+            ) : (
+              <button className="bg-black mt-5 text-white rounded-full w-full py-2 px-2 cursor-pointer">
+                {isSignUp ? "Register" : "Login"}
+              </button>
+            )}
             {isSignUp ? (
               <p className="mt-2 text-center">
                 Have an Account?{" "}
