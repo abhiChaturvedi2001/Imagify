@@ -4,7 +4,6 @@ import Images from "./Images";
 import HowItWorks from "./HowItWorks";
 import Infor from "./Infor";
 import Footer from "./Footer";
-import Login from "./Login";
 
 const Body = () => {
   return (

@@ -8,6 +8,8 @@ import ForgotPassword from "./component/ForgotPassword";
 import VerifyPassword from "./component/VerifyPassword";
 import Reset from "./component/Reset";
 import Profile from "./component/Profile";
+import ImageGenerate from "./component/ImageGenerate";
+import ProtectedRoutes from "./component/ProtectedRoutes";
 
 const App = () => {
   return (
@@ -29,6 +31,14 @@ export const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <Body />,
+      },
+      {
+        path: "/image-generate",
+        element: (
+          <ProtectedRoutes>
+            <ImageGenerate />{" "}
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "/pricing",

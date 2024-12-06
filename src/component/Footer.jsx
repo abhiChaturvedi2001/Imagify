@@ -1,5 +1,6 @@
 import React from "react";
 import appLogo from "/logo.svg";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -7,9 +8,11 @@ const Footer = () => {
       <div className="h-[60vh] flex justify-center items-center">
         <div className="text-center">
           <h1 className="text-4xl">See the magic. Try now</h1>
-          <button className="bg-black mt-5 text-white rounded-full w-[10rem] py-2 px-2 cursor-pointer">
-            Generate Images
-          </button>
+          <Link to={"/image-generate"}>
+            <button className="bg-black mt-5 text-white rounded-full w-[10rem] py-2 px-2 cursor-pointer">
+              Generate Images
+            </button>
+          </Link>
         </div>
       </div>
 

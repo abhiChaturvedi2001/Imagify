@@ -1,5 +1,5 @@
-import React from "react";
 import starIcon from "/star_icon.svg";
+import { Link } from "react-router";
 
 const Banner = () => {
   return (
@@ -20,9 +20,11 @@ const Banner = () => {
             Unleash your creativity with AI. Turn your imagination into visual
             art in <br /> seconds – just type, and watch the magic happen.
           </p>
-          <button className="bg-black text-white rounded-full w-[12rem] py-2 px-2 cursor-pointer ">
-            Generate Images{" "}
-          </button>
+          <Link to={"/image-generate"}>
+            <button className="bg-black text-white rounded-full w-[12rem] py-2 px-2 cursor-pointer ">
+              Generate Images{" "}
+            </button>
+          </Link>
         </div>
       </div>
     </>
